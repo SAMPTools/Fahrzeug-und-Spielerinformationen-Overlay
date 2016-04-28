@@ -132,6 +132,7 @@ while(1)
 		{
 			DestroyAllVisual()
 			Overlay := 0
+			VehicleText := 0
 		}
 	}
 	Sleep, 1 		;Verringert die Ressourcennutzung des Prozessors deutlich (Ohne Sleep, ~5%, mit 0-0.1% Auslastung des Prozessors).
