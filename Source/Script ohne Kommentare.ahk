@@ -129,6 +129,7 @@ while(1)
 		{
 			DestroyAllVisual()
 			Overlay := 0
+			VehicleText := 0
 		}
 	}
 	Sleep, 1
