@@ -71,36 +71,43 @@ while(1)
 		{
 			CarInfoStr := "{FFFFFF}Auto: {B0B0B0}" GetVehicleModelName() " (ID: " GetVehicleModelId() ")`n"
 			
-			if(getVehicleType() == 1)
-				CarInfoStr .= "{FFFFFF}Typ: {B0B0B0} Auto`n"
-			if(getVehicleType() == 2)
-				CarInfoStr .= "{FFFFFF}Typ: {B0B0B0} Boot`n"
-			if(getVehicleType() == 3)
-				CarInfoStr .= "{FFFFFF}Typ: {B0B0B0} Zug`n"
-			if(getVehicleType() == 4)
-				CarInfoStr .= "{FFFFFF}Typ: {B0B0B0} Motorrad`n"
-			if(getVehicleType() == 5)
-				CarInfoStr .= "{FFFFFF}Typ: {B0B0B0} Flugzeug`n"
-			if(getVehicleType() == 6)
-				CarInfoStr .= "{FFFFFF}Typ: {B0B0B0} Fahrrad`n"
+			Vehicle_Type 			:= getVehicleType()
+			Vehicle_Engine_State 	:= GetVehicleEngineState()
+			Vehicle_Light_State 	:= GetVehicleLightState()
+			Vehicle_Lock_State 		:= GetVehicleLockState()
+			Vehicle_Health			:= GetVehicleHealth()
+			Vehicle_Speed			:= GetVehicleSpeed()
+			
+			if(Vehicle_Type == 1)
+				CarInfoStr .= "{FFFFFF}Typ: {B0B0B0}Auto`n"
+			if(Vehicle_Type == 2)
+				CarInfoStr .= "{FFFFFF}Typ: {B0B0B0}Boot`n"
+			if(Vehicle_Type == 3)
+				CarInfoStr .= "{FFFFFF}Typ: {B0B0B0}Zug`n"
+			if(Vehicle_Type == 4)
+				CarInfoStr .= "{FFFFFF}Typ: {B0B0B0}Motorrad`n"
+			if(Vehicle_Type == 5)
+				CarInfoStr .= "{FFFFFF}Typ: {B0B0B0}Flugzeug`n"
+			if(Vehicle_Type == 6)
+				CarInfoStr .= "{FFFFFF}Typ: {B0B0B0}Fahrrad`n"
 			
 			;CarInfoStr .= "{FFFFFF}Color 1: {B0B0B0}" GetVehicleColor1()"`n"
-			;CarInfoStr .= "{FFFFFF}Color 2: {B0B0B0}" GetVehicleColor2()"`n"				
+			;CarInfoStr .= "{FFFFFF}Color 2: {B0B0B0}" GetVehicleColor2()"`n"
 			
-			if(GetVehicleEngineState() == 0)
+			if(Vehicle_Engine_State <= 0)
 				CarInfoStr .= "{FFFFFF}Motor:{8C8C8C} {D50000}Ausgeschaltet{D50000}`n"
-			if(GetVehicleEngineState() == 1)
+			else if(Vehicle_Engine_State >= 1)
 				CarInfoStr .= "{FFFFFF}Motor:{8C8C8C} {36F840}Eingeschaltet{36F840}`n"
-			if(GetVehicleLightState() == 0)
+			if(Vehicle_Light_State <= 0)
 				CarInfoStr .= "{FFFFFF}Licht:{8C8C8C} {D50000}Ausgeschaltet{D50000}`n"
-			if(GetVehicleLightState() == 1)
+			else if(Vehicle_Light_State >= 1)
 				CarInfoStr .= "{FFFFFF}Licht:{8C8C8C} {36F840}Eingeschaltet{36F840}`n"
-			if(GetVehicleLockState() == 1)
+			if(Vehicle_Lock_State >= 1)
 				CarInfoStr .= "{FFFFFF}Schloss:{8C8C8C} {36F840}Abgeschlossen{36F840}`n"
-			if(GetVehicleLockState() == 0)
+			else if(Vehicle_Lock_State <= 0)
 				CarInfoStr .= "{FFFFFF}Schloss:{8C8C8C} {D50000}Aufgeschlossen{D50000}`n"
-			CarInfoStr .= "{FFFFFF}Zustand:{B0B0B0} " GetVehicleHealth() "`n"
-			CarInfoStr .= "{FFFFFF}Geschwindigkeit:{B0B0B0} " Round(GetVehicleSpeed()) " KM/H`n"
+			CarInfoStr .= "{FFFFFF}Zustand:{B0B0B0} " Vehicle_Health "`n"
+			CarInfoStr .= "{FFFFFF}Geschwindigkeit:{B0B0B0} " Round(Vehicle_Speed) " KM/H`n"
 			
 			if(VehicleText)
 			{
@@ -146,13 +153,19 @@ ExitApp
 return
 
 Numpad0::
-FontSizeText := 8
-TextUpdate(PlayerInfo, "Geneva", FontSizeText, 1, 0)
-TextUpdate(CarInfo, "Geneva", FontSizeText, 1, 0)
+if(WinActive("GTA:SA:MP") && IsSAMPAvailable() && Overlay)
+{
+	FontSizeText := 8
+	TextUpdate(PlayerInfo, "Geneva", FontSizeText, 1, 0)
+	TextUpdate(CarInfo, "Geneva", FontSizeText, 1, 0)
+}
 return
 
 Numpad1::
-FontSizeText := 7
-TextUpdate(PlayerInfo, "Geneva", FontSizeText, 1, 0)
-TextUpdate(CarInfo, "Geneva", FontSizeText, 1, 0)
+if(WinActive("GTA:SA:MP") && IsSAMPAvailable() && Overlay)
+{
+	FontSizeText := 7
+	TextUpdate(PlayerInfo, "Geneva", FontSizeText, 1, 0)
+	TextUpdate(CarInfo, "Geneva", FontSizeText, 1, 0)
+}
 return
