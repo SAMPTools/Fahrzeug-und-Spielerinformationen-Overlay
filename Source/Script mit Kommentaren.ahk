@@ -40,7 +40,7 @@ while(1)
 		if(Overlay == 0) 			;Wenn die TextLabel noch nicht erstellt wurden, werden diese hier erstellt
 		{
 			PlayerBox := BoxCreate(648, 215, 153, 188, 0xAA000000, 1)
-			CarBox := BoxCreate(648, 408, 153, 153, 0xAA000000, 0)
+			CarBox := BoxCreate(648, 408, 153, 130, 0xAA000000, 0)
 			
 			PlayerTitel := "Spieler"
 			PlayerTitelText := TextCreate("Geneva", FontSizeTitel, 1, 0, 704, 219, 0xFFFFFFFF, "", 1, 1)
@@ -87,8 +87,8 @@ while(1)
 			if(getVehicleType() == 6)
 				CarInfoStr .= "{FFFFFF}Typ: {B0B0B0} Fahrrad`n"
 			
-			CarInfoStr .= "{FFFFFF}Color 1: {B0B0B0}" GetVehicleColor1()"`n"
-			CarInfoStr .= "{FFFFFF}Color 2: {B0B0B0}" GetVehicleColor2()"`n"				
+			;CarInfoStr .= "{FFFFFF}Color 1: {B0B0B0}" GetVehicleColor1()"`n"
+			;CarInfoStr .= "{FFFFFF}Color 2: {B0B0B0}" GetVehicleColor2()"`n" Die beiden Funktionen funktionieren einfach nicht richtig. Wenn man mit dem Auto fährt, ändert sich der Wert der Farbe auf -223342341, oder so.				
 			
 			if(GetVehicleEngineState() == 0)
 				CarInfoStr .= "{FFFFFF}Motor:{8C8C8C} {D50000}Ausgeschaltet{D50000}`n"
