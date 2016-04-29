@@ -17,3 +17,4 @@ Folgendes wurde verbessert:
 • Ein Fehler, der die Informationen des Fahrzeugs zum Flackern gebracht hat (Zeilen/Texte wurden nicht geladen).
 • Die Anzeige, für die Farbe des Fahrzeugs, wurde entfernt, da diese Anzeigt fehlerhaft war (Ist die Funktion aus der SAMP-UDF, die leider nicht die richtigen Werte ausgibt, wenn man das Fahrzeug bewegt).
 • Die Overlay.exe muss jetzt als Administrator gestartet werden.
+• In den Fahrzeuginformationen ist ein Leerzeichen zu viel nach "Typ:" gewesen.
